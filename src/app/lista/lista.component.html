@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-center">
+  <button (click)="getList()" type="button" class="btn btn-dark m-5">All</button>
+  <button (click)="getUndone()" type="button" class="btn btn-dark m-5">Undone</button>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="d-flex flex-column">
+    <div class="d-flex flex-row">
+      <input [(ngModel)]="input" class="form-control" placeholder="To Do">
+      <button (click)="add()" type="button" class="btn btn-success">Add</button>
+    </div>
+    <div class="d-flex flex-column mt-4">
+      <div class="form-check" *ngFor="let item of lista">
+        <div class="d-flex justify-content-between">
+          <div>
+            <mat-checkbox [checked]="item.done" (click)="done(item.id)"></mat-checkbox>
+            <label class="form-check-label" for="flexCheckDefault">
+              {{ item.todo }}
+            </label>
+          </div>
+          <button (click)="delete(item.id)" type="button" style="border: 0; background: #fff; margin-left: 15px;">
+            <fa-icon [icon]="trashIcon"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
